@@ -1,8 +1,8 @@
 <h2>Access Control List Management</h2>
 <ul class="acl">
-  <li><?php print $html->image('/acl/img/tango/32x32/apps/system-users.png') ?><?php print $html->link('Manage Aros', '/admin/acl/aros') ?></li>
-  <li><?php print $html->image('/acl/img/tango/32x32/apps/preferences-system-windows.png') ?><?php print $html->link('Manage Acos', '/admin/acl/acos') ?></li>
-  <li><?php print $html->image('/acl/img/tango/32x32/emblems/emblem-readonly.png') ?><?php print $html->link('Manage Permissions', '/admin/acl/permissions') ?></li>
+  <li><?php print $html->image('/acl/img/tango/32x32/apps/system-users.png') ?><?php print $html->link('Manage Aros', array('plugin' => 'acl', 'prefix' => 'admin', 'controller' => 'acl', 'action' => 'aros')) ?></li>
+  <li><?php print $html->image('/acl/img/tango/32x32/apps/preferences-system-windows.png') ?><?php print $html->link('Manage Acos', array('plugin' => 'acl', 'prefix' => 'admin', 'controller' => 'acl', 'action' => 'acos')) ?></li>
+  <li><?php print $html->image('/acl/img/tango/32x32/emblems/emblem-readonly.png') ?><?php print $html->link('Manage Permissions', array('plugin' => 'acl', 'prefix' => 'admin', 'controller' => 'acl', 'action' => 'permissions')) ?></li>
 </ul>
 <br />
 

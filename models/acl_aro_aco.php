@@ -22,7 +22,14 @@ class AclAroAco extends AclAppModel {
  * @return array
  */
 	public function getAllowedAro($acoId) {
-		$acoNode = $this->AclAco->read(null, $acoId);
+		$acoNode = $this->AclAco->find(
+			'first',
+			array(
+				'conditions' => array(
+					'AclAco.id' =>  $acoId
+				)
+			)
+		);
 
 		$nodes = array();
 		$nodes[] = $acoNode;
@@ -30,7 +37,15 @@ class AclAroAco extends AclAppModel {
 		$top = false;
 		while ($top == false) {
 			$currentNode = $nodes[0];
-			$parentNode = $this->AclAco->read(null, $currentNode['AclAco']['parent_id']);
+			$parentNode = $this->AclAco->find(
+				'first',
+				array(
+					'conditions' => array(
+						'AclAco.id' => $currentNode['AclAco']['parent_id']
+					),
+					'contain' => false
+				)
+			);
 			array_unshift($nodes, $parentNode);
 			if (empty($parentNode['AclAco']['parent_id'])) {
 				$top = true;
@@ -41,7 +56,8 @@ class AclAroAco extends AclAppModel {
 			$conditions = array(
 				'AclAroAco.aco_id' => $node['AclAco']['id']
 			);
-			$permissions = $this->find('all', compact('conditions'));
+			$contain = array('AclAro');
+			$permissions = $this->find('all', compact('conditions','contain'));
 			foreach ($permissions as &$perms) {
 				if ($this->_checkPermKeys($perms['AclAroAco'])) {
 					$allowed[] = array(
@@ -60,15 +76,29 @@ class AclAroAco extends AclAppModel {
  * @param int $aroId The id of the ARO you want.
  */
 	public function getAllowedAco($aroId) {
-		$aroNode = $this->AclAro->read(null, $aroId);
-
+		$aroNode = $this->AclAro->find(
+			'first',
+			array(
+				'conditions' => array(
+					'AclAro.id' => $aroId
+				)
+			)
+		);
 		$nodes = array();
 		$nodes[] = $aroNode;
 
 		$top = false;
 		while ($top == false) {
 			$currentNode = $nodes[0];
-			$parentNode = $this->AclAro->read(null, $currentNode['AclAro']['parent_id']);
+			$parentNode = $this->AclAro->find(
+				'first',
+				array(
+					'conditions' => array(
+						'AclAro.id' => $currentNode['AclAro']['parent_id']
+					),
+					'contain' => false
+				)	
+			);
 			array_unshift($nodes, $parentNode);
 			if (empty($parentNode['AclAro']['parent_id'])) {
 				$top = true;
@@ -79,7 +109,8 @@ class AclAroAco extends AclAppModel {
 			$conditions = array(
 				'AclAroAco.aro_id' => $node['AclAro']['id']
 			);
-			$permissions = $this->find('all', compact('conditions'));
+			$contain = array('AclAco');
+			$permissions = $this->find('all', compact('conditions','contain'));
 			foreach ($permissions as &$perms) {
 				if ($this->_checkPermKeys($perms['AclAroAco'])) {
 					$allowed[] = array(

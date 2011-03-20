@@ -12,7 +12,7 @@ class AclPermissionsController extends AclAppController {
 			'aro_id' => $this->data['AclAroAco']['aro_id'],
 			'aco_id' => $this->data['AclAroAco']['aco_id']
 		);
-		if ($this->AclAroAco->find($conditions)) {
+		if ($this->AclAroAco->find('count',array('conditions'=>$conditions)) > 0) {
 			return true;
 		} else {
 			return false;
@@ -43,7 +43,15 @@ class AclPermissionsController extends AclAppController {
 		}
 		$this->layout = '';
 
-		$nodes = $this->AclAroAco->findAllByAroId($id);
+		$nodes = $this->AclAroAco->find(
+			'all',
+			array(
+				'conditions' => array(
+					'AclAroAco.arc_id' => $id
+				),
+				'contain' => false
+			)
+		);
 
 		$aro = $this->AclAro->getStringPath($id);
 		$this->set('aro', $aro);

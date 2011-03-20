@@ -5,7 +5,15 @@ class AclAcosController extends AclAppController {
 
 	function load($id) {
 		$this->layout = '';
-		$n = $this->AclAco->read(null, $id);
+		$n = $this->AclAco->find(
+			'first',
+			array(
+				'conditions' => array(
+					'AclAco.id' => $id
+				),
+				'contain' => false
+			)
+		);
 		$data = array(
 			'id' => $n['AclAco']['id'],
 			'alias' => $n['AclAco']['alias'],
@@ -31,9 +39,18 @@ class AclAcosController extends AclAppController {
 		Configure::write('debug', 0);
 		$this->layout = '';
 
-		$node = $this->AclAco->read(null, $id);
+		$this->AclAco->contain();
+		$node = $this->AclAco->find(
+			'first',
+			array(
+				'conditions' => array(
+					'AclAco.id' => $id
+				),
+				'contain' => false
+			)
+		);
 
-		$children = $this->AclAco->children($id, true);
+		$children = $this->AclAco->children($id, true, null, null, null, 1, 0);
 
 		$sorted = array();
 		foreach ($children as $c) {

@@ -47,7 +47,7 @@ class AclPermissionsController extends AclAppController {
 			'all',
 			array(
 				'conditions' => array(
-					'AclAroAco.arc_id' => $id
+					'AclAroAco.aro_id' => $id
 				),
 				'contain' => false
 			)

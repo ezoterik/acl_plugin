@@ -8,7 +8,11 @@ class AclAco extends AclAppModel {
 		$pieces = $this->getPath($id);
 		$path = array();
 		foreach ($pieces as $p) {
-			$path[] = $p['AclAco']['alias'];
+			if ( !empty($p['AclAco']['alias']) ) {
+				$path[] = $p['AclAco']['alias'];
+			} else {
+				$path[] = $p['AclAro']['model'] . ' - ' . $p['AclAro']['foreign_key'];
+			}
 		}
 		$path = implode(' > ', $path);
 		return $path;

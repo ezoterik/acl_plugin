@@ -11,7 +11,7 @@ class AclAco extends AclAppModel {
 			if ( !empty($p['AclAco']['alias']) ) {
 				$path[] = $p['AclAco']['alias'];
 			} else {
-				$path[] = $p['AclAro']['model'] . ' - ' . $p['AclAro']['foreign_key'];
+				$path[] = $p['AclAco']['model'] . ' - ' . $p['AclAco']['foreign_key'];
 			}
 		}
 		$path = implode(' > ', $path);

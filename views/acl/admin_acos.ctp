@@ -1,3 +1,6 @@
+<?php
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
+?>
 <?php print $this->element('acl_scripts') ?>
 <?php print $this->element('acl_menu') ?>
 <div>

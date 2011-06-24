@@ -1,3 +1,6 @@
+<?php
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
+?>
 <div class="acl_menu">
 <?php print $html->image('/acl/img/tango/32x32/places/folder.png', array('align' => 'absmiddle')) ?><?php print $html->link('Acl Menu', array('plugin' => 'acl', 'prefix' => 'admin', 'controller' => 'acl', 'action' => 'index')) ?>
 

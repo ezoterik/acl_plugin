@@ -1,3 +1,6 @@
+<?php
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
+?>
 <?php print $this->element('acl_scripts') ?>
 <h2>Access Control List Management</h2>
 <ul class="acl">

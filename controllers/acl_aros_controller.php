@@ -1,5 +1,7 @@
 <?php
 
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
+
 class AclArosController extends AclAppController {
 	var $name = 'AclAros';
 

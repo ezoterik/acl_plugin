@@ -1,3 +1,6 @@
+<?php
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
+?>
 <div class="acl_permission_box">
   <div class="acl_permission_title"><?php print $aro ?> Grants</div>
   <?php $i=0; foreach ($nodes as $k => $n) { $i++; ?>

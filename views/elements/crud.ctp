@@ -1,4 +1,5 @@
 <?php
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
 
 foreach(array_keys($aro_aco) as $key) {
 	if (substr($key,0,1) == '_') {

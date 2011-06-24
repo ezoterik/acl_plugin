@@ -1,3 +1,6 @@
+<?php
+/* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
+?>
 <?php if ($node['AclAro']['lft']) { ?>
 <option value="<?php print $node['AclAro']['parent_id'] ?>">..</option>
 <?php } ?>

@@ -55,6 +55,9 @@ class AclAcosController extends AclAppController {
 		$sorted = array();
 		foreach ($children as $c) {
 			$c['AclAco']['children'] = ($c['AclAco']['rght'] - $c['AclAco']['lft'] - 1) / 2;
+			if (empty($c['AclAco']['alias'])) {
+				$c['AclAco']['alias'] = $c['AclAco']['model'] . ' - ' . $c['AclAco']['foreign_key'];
+			}
 			$sorted[$c['AclAco']['alias']] = $c;
 		}
 		ksort($sorted);

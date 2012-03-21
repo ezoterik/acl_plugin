@@ -7,7 +7,7 @@ class AclController extends AclAppController {
 
 	var $uses = array('Acl.AclAco', 'Acl.AclAro');
 
-	var $helpers = array('Html', 'Javascript');
+	var $helpers = array('Html');
 
 	function admin_index() {
 

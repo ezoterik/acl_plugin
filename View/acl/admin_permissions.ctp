@@ -4,7 +4,7 @@
 <?php print $this->element('acl_scripts') ?>
 <?php print $this->element('acl_menu') ?>
 <div>
-  <?php print $html->image('/acl/img/tango/32x32/emblems/emblem-readonly.png', array('align' => 'absmiddle')) ?>
+  <?php print $this->Html->image('/acl/img/tango/32x32/emblems/emblem-readonly.png', array('align' => 'absmiddle')) ?>
   <b>Manage Permissions</b>
 </div>
 <div class="acl_message">
@@ -26,12 +26,12 @@ revoke.</p>
   <thead>
   <tr>
     <th>
-      <?php print $html->image('/acl/img/tango/32x32/apps/system-users.png', array('align' => 'absmiddle')) ?>
+      <?php print $this->Html->image('/acl/img/tango/32x32/apps/system-users.png', array('align' => 'absmiddle')) ?>
       Access Request Objects
     </th>
     <th></th>
     <th>
-      <?php print $html->image('/acl/img/tango/32x32/apps/preferences-system-windows.png', array('align' => 'absmiddle')) ?>
+      <?php print $this->Html->image('/acl/img/tango/32x32/apps/preferences-system-windows.png', array('align' => 'absmiddle')) ?>
       Access Control Objects
     </th>
   </tr>
@@ -43,7 +43,7 @@ revoke.</p>
       </select><br />
     </td>
     <td width="80">
-      <?php print $html->image('/acl/img/tango/32x32/actions/edit-redo.png', array( 'id'=>'acl_link_button','class' => 'acl_button')) ?>
+      <?php print $this->Html->image('/acl/img/tango/32x32/actions/edit-redo.png', array( 'id'=>'acl_link_button','class' => 'acl_button')) ?>
     <td>
       <select id="aco_editor_parentId" class="acl_select" size="10">
 		<option>Empty</option>

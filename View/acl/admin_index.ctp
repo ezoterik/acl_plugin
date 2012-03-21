@@ -1,12 +1,12 @@
 <?php
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
 ?>
-<?php print $this->element('acl_scripts') ?>
+<?php echo $this->element('acl_scripts') ?>
 <h2>Access Control List Management</h2>
 <ul class="acl">
-  <li><?php print $html->image('/acl/img/tango/32x32/apps/system-users.png') ?><?php print $html->link('Manage Aros', array('plugin' => 'acl', 'prefix' => 'admin', 'controller' => 'acl', 'action' => 'aros')) ?></li>
-  <li><?php print $html->image('/acl/img/tango/32x32/apps/preferences-system-windows.png') ?><?php print $html->link('Manage Acos', array('plugin' => 'acl', 'prefix' => 'admin', 'controller' => 'acl', 'action' => 'acos')) ?></li>
-  <li><?php print $html->image('/acl/img/tango/32x32/emblems/emblem-readonly.png') ?><?php print $html->link('Manage Permissions', array('plugin' => 'acl', 'prefix' => 'admin', 'controller' => 'acl', 'action' => 'permissions')) ?></li>
+  <li><?php print $this->Html->image('/acl/img/tango/32x32/apps/system-users.png') ?><?php print $this->Html->link('Manage Aros', array('plugin' => 'acl', 'prefix' => 'admin', 'controller' => 'acl', 'action' => 'aros')) ?></li>
+  <li><?php print $this->Html->image('/acl/img/tango/32x32/apps/preferences-system-windows.png') ?><?php print $this->Html->link('Manage Acos', array('plugin' => 'acl', 'prefix' => 'admin', 'controller' => 'acl', 'action' => 'acos')) ?></li>
+  <li><?php print $this->Html->image('/acl/img/tango/32x32/emblems/emblem-readonly.png') ?><?php print $this->Html->link('Manage Permissions', array('plugin' => 'acl', 'prefix' => 'admin', 'controller' => 'acl', 'action' => 'permissions')) ?></li>
 </ul>
 <br />
 

@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
 
 class AclAroAco extends AclAppModel {
-	var $useTable = 'aros_acos';
+  public $useTable = 'aros_acos';
 
 	public $belongsTo = array(
 		'AclAro' => array(

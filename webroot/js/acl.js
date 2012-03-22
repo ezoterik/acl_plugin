@@ -11,9 +11,10 @@ function acl_aro_editor_load() {
 	indicator_show();
 	var id = $('#aro_editor_parentId').attr('value');
 	$.ajax({
-		url: acl_base_url + '/aclAros/load/' + id,
+		url: acl_base_url + '/AclAros/load/' + id + '.json',
 		dataType: 'json',
 		success: function(data,textStatus) {
+      data = data.data || {};
 			$('#aro_editor_id').attr('value',data.id);
 			$('#aro_editor_originalParentId').attr('value', data.parent_id);
 			$('#aro_editor_alias').attr('value', data.alias);
@@ -31,7 +32,7 @@ function acl_aro_editor_load() {
 function acl_aro_editor_children(id) {
 	indicator_show();
 	$.ajax({
-		url: acl_base_url + '/aclAros/children/' + id,
+		url: acl_base_url + '/AclAros/children/' + id,
 		dataType: 'html',
 		success: function(data,textStatus) {
 			$('#aro_editor_parentId').html(data);
@@ -42,7 +43,7 @@ function acl_aro_editor_children(id) {
 function acl_aro_editor_reload() {
 	indicator_show();
 	$.ajax({
-		url: acl_base_url + '/aclAros/children',
+		url: acl_base_url + '/AclAros/children',
 		dataType: 'html',
 		success: function(data,textStatus) {
 			$('#aro_editor_parentId').html(data);
@@ -54,7 +55,7 @@ function acl_aro_editor_delete() {
 	indicator_show();
 	var id = $('#aro_editor_parentId').attr('value');
 	$.ajax({
-		url: acl_base_url + '/aclAros/delete/' + id,
+		url: acl_base_url + '/AclAros/delete/' + id + '.json',
 		success: function(data,textStatus) {
 			acl_aro_editor_children($('#aro_editor_originalParentId').attr('value'));
 			acl_aro_editor_cancel();
@@ -80,7 +81,7 @@ function acl_aro_editor_create() {
 	}
 	var h = {'data[AclAro][alias]':alias, 'data[AclAro][foreign_key]':key, 'data[AclAro][model]':model, 'data[AclAro][parent_id]':parent_id};
 	$.ajax({
-		url: acl_base_url + '/aclAros/add',
+		url: acl_base_url + '/AclAros/add.json',
 		data: h,
 		type: 'POST',
 		success: function(data,statusText) {
@@ -103,7 +104,7 @@ function acl_aro_editor_update() {
 		var h = {'data[AclAro][id]':id, 'data[AclAro][alias]':alias, 'data[AclAro][foreign_key]':key, 'data[AclAro][model]':model};
 	}
 	$.ajax({
-		url: acl_base_url + '/aclAros/update',
+		url: acl_base_url + '/AclAros/update.json',
 		data: h,
 		type: 'POST',
 		success: function(data,statusText) {
@@ -133,9 +134,10 @@ function acl_aco_editor_load() {
 	indicator_show();
 	var id = $('#aco_editor_parentId').attr('value');
 	$.ajax({
-		url: acl_base_url + '/aclAcos/load/' + id,
+		url: acl_base_url + '/AclAcos/load/' + id + '.json',
 		dataType: 'json',
 		success: function(data,statusText) {
+      data = data.data || {};
 			$('#aco_editor_id').attr('value',data.id);
 			$('#aco_editor_originalParentId').attr('value',data.parent_id);
 			$('#aco_editor_alias').attr('value',data.alias);
@@ -150,7 +152,7 @@ function acl_aco_editor_load() {
 function acl_aco_editor_children(id) {
 	indicator_show();
 	$.ajax({
-		url: acl_base_url + '/aclAcos/children/' + id,
+		url: acl_base_url + '/AclAcos/children/' + id ,
 		dataType: 'html',
 		success: function(data,statusText) {
 			$('#aco_editor_parentId').html(data);
@@ -162,7 +164,7 @@ function acl_aco_editor_children(id) {
 function acl_aco_editor_reload() {
 	indicator_show();
 	$.ajax({
-		url: acl_base_url + '/aclAcos/children',
+		url: acl_base_url + '/AclAcos/children',
 		dataType: 'html',
 		success: function(data,statusText) {
 			$('#aco_editor_parentId').html(data);
@@ -174,7 +176,7 @@ function acl_aco_editor_delete() {
 	indicator_show();
 	var id = $('#aco_editor_parentId').attr('value');
 	$.ajax({
-		url: acl_base_url + '/aclAcos/delete/' + id,
+		url: acl_base_url + '/AclAcos/delete/' + id + '.json',
 		success: function(data,statusText) {
 			acl_aco_editor_children($('#aco_editor_originalParentId').attr('value'));
 			acl_aco_editor_cancel();
@@ -198,7 +200,7 @@ function acl_aco_editor_create() {
 	}
 	var h = {'data[AclAco][alias]':alias, 'data[AclAco][foreign_key]':key, 'data[AclAco][model]':model, 'data[AclAco][parent_id]':parent_id};
 	$.ajax({
-		url: acl_base_url + '/aclAcos/add',
+		url: acl_base_url + '/AclAcos/add.json',
 		data: h,
 		type: 'POST',
 		success: function() {
@@ -221,7 +223,7 @@ function acl_aco_editor_update() {
 		h = {'data[AclAco][id]':id, 'data[AclAco][alias]':alias, 'data[AclAco][foreign_key]':key, 'data[AclAco][model]':model};
 	}
 	$.ajax({
-		url: acl_base_url + '/aclAcos/update',
+		url: acl_base_url + '/AclAcos/update.json',
 		data: h,
 		type: 'POST',
 		success: function() {
@@ -249,7 +251,7 @@ function acl_aco_setup() {
 function acl_aco_permission_refresh() {
 	var aco_id = $('#aco_editor_parentId').attr('value');
 	$.ajax({
-		url: acl_base_url + '/aclPermissions/acos/' + aco_id,
+		url: acl_base_url + '/AclPermissions/acos/' + aco_id,
 		dataType: 'html',
 		success: function(data,statusText) {
 			$('#aco_permissions').html(data);
@@ -259,7 +261,7 @@ function acl_aco_permission_refresh() {
 function acl_aro_permission_refresh() {
 	var aro_id = $('#aro_editor_parentId').attr('value');
 	$.ajax({
-		url: acl_base_url + '/aclPermissions/aros/' + aro_id,
+		url: acl_base_url + '/AclPermissions/aros/' + aro_id,
 		dataType: 'html',
 		success: function(data,statusText) {
 			$('#aro_permissions').html(data);
@@ -272,7 +274,7 @@ function acl_permission_link() {
 	var aco_id = $('#aco_editor_parentId').attr('value');
 	var h = {'data[AclAroAco][aro_id]':aro_id, 'data[AclAroAco][aco_id]':aco_id};
 	$.ajax({
-		url: acl_base_url + '/aclPermissions/create',
+		url: acl_base_url + '/AclPermissions/create.json',
 		data: h,
 		type: 'POST',
 		success: function(data,statusText) {
@@ -284,7 +286,7 @@ function acl_permission_link() {
 function acl_permission_revoke(id) {
 	if (confirm("You sure you want to revoke this ACL?")) {
 		$.ajax({
-			url: acl_base_url + '/aclPermissions/revoke/' + id,
+			url: acl_base_url + '/AclPermissions/revoke/' + id + '.json',
 			success: function(data,statusText) {
 				acl_aro_permission_refresh();
 				acl_aco_permission_refresh();
@@ -300,7 +302,7 @@ function acl_permission_crud_update(el) {
 	var h = { 'data[AclAroAco][id]': id };
 	h[crud] = checked;
 	$.ajax({
-		url: acl_base_url + '/aclPermissions/crud',
+		url: acl_base_url + '/AclPermissions/crud.json',
 		data: h,
 		type: 'POST',
 		success: function(data,statusText) {

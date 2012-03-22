@@ -3,10 +3,10 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
 
 class AclAro extends AclAppModel {
-	var $useTable = 'aros';
-	var $actsAs = array('Tree');
-	
-	function getStringPath($id) {
+  public $useTable = 'aros';
+  public $actsAs = array('Tree');
+
+  public function getStringPath($id) {
 		$pieces = $this->getPath($id);
 		$path = array();
 		foreach ($pieces as $p) {

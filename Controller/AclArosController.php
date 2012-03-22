@@ -5,8 +5,14 @@
 class AclArosController extends AclAppController {
 	var $name = 'AclAros';
 
-	function load($id) {
-		$this->layout = '';
+  public $components = array('RequestHandler');
+
+  public function beforeFilter() {
+    parent::beforeFilter();
+  }
+
+  public function load($id) {
+
 		$n = $this->AclAro->find(
 			'first',
 			array(
@@ -23,21 +29,20 @@ class AclArosController extends AclAppController {
 			'key' => $n['AclAro']['foreign_key'],
 			'parent_id' => $n['AclAro']['parent_id']
 		);
-		Configure::write('debug', 0);
-		App::import('Vendor', 'Acl.json');
-		$json = new Services_JSON();
-		$json = $json->encode($data);
-		$this->set('json', $json);
+
+    $this->set('data',$data);
+		$this->set('_serialize', array('data'));
 	}
 
-	function delete($id) {
-		if (!$this->AclAro->delete($id)) {
-			$this->failure();
-		}
-		exit;
+  public function delete($id) {
+		if ($this->AclAro->delete($id)) {
+			$this->success();
+		} else {
+      $this->failure();
+    }
 	}
 
-	function children($id = 0) {
+  public function children($id = 0) {
 		Configure::write('debug', 0);
 		$this->layout = '';
 
@@ -67,33 +72,26 @@ class AclArosController extends AclAppController {
 		$this->set('children', $sorted);
 	}
 
-	function add() {
+  public function add() {
 		if (isset($this->data['AclAro']['parent_id']) &&  !$this->data['AclAro']['parent_id']) {
 			$this->data['AclAro']['parent_id'] = null;
 		}
-		if (!$this->AclAro->save($this->data)) {
-			$this->failure();
-		}
-		exit;
+		if ($this->AclAro->save($this->data)) {
+      $this->success();
+    } else {
+      $this->failure();
+    }
 	}
 
-	function update() {
+  public function update() {
 		if (isset($this->data['AclAro']['parent_id']) &&  !$this->data['AclAro']['parent_id']) {
 			$this->data['AclAro']['parent_id'] = null;
 		}
-		if (!$this->AclAro->save($this->data)) {
-			$this->failure();
-		}
-		exit;
-	}
-
-	function test() {
-		$array['AclAro'] = array(
-			'parent_id' => '',
-			'alias' => 'test'
-		);
-		$this->AclAro->save($array);
-		exit;
+		if ($this->AclAro->save($this->data)) {
+      $this->success();
+    } else {
+      $this->failure();
+    }
 	}
 
 }

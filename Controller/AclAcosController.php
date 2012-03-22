@@ -3,9 +3,11 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
 
 class AclAcosController extends AclAppController {
-	var $name = 'AclAcos';
+  public $name = 'AclAcos';
 
-	function load($id) {
+  public $uses = array('Acl.AclAco');
+
+  public function load($id) {
 		$this->layout = '';
 		$n = $this->AclAco->find(
 			'first',
@@ -24,24 +26,22 @@ class AclAcosController extends AclAppController {
 			'parent_id' => $n['AclAco']['parent_id']
 		);
 		Configure::write('debug', 0);
-		App::import('Vendor', 'Acl.json');
-		$json = new Services_JSON();
-		$json = $json->encode($data);
-		$this->set('json', $json);
+		$this->set('data',$data);
+    $this->set('_serialize',array('data'));
 	}
 
-	function delete($id) {
-		if (!$this->AclAco->delete($id)) {
+  public function delete($id) {
+		if ($this->AclAco->delete($id)) {
+      $this->success();
+    } else {
 			$this->failure();
 		}
-		exit;
 	}
 
-	function children($id = null) {
-		Configure::write('debug', 0);
+  public function children($id = null) {
+		//Configure::write('debug', 0);
 		$this->layout = '';
 
-		$this->AclAco->contain();
 		$node = $this->AclAco->find(
 			'first',
 			array(
@@ -68,25 +68,27 @@ class AclAcosController extends AclAppController {
 		$this->set('children', $sorted);
 	}
 
-	function add() {
+  public function add() {
 		if (isset($this->data['AclAco']['parent_id']) &&  !$this->data['AclAco']['parent_id']) {
 			$this->data['AclAco']['parent_id'] = null;
 		}
-		if (!$this->AclAco->save($this->data)) {
-			$this->failure();
-		}
-		exit;
+		if ($this->AclAco->save($this->data)) {
+			$this->success();
+		} else {
+      $this->failure();
+    }
 	}
 
-	function update() {
+  public function update() {
 		if (isset($this->data['AclAco']['parent_id']) &&  !$this->data['AclAco']['parent_id']) {
 			$this->data['AclAco']['parent_id'] = null;
 		}
 		$this->layout = '';
-		if (!$this->AclAco->save($this->data)) {
-			$this->failure();
-		}
-		exit;
+		if ($this->AclAco->save($this->data)) {
+      $this->success();
+    } else {
+      $this->failure();
+    }
 	}
 
 }

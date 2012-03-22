@@ -9,19 +9,19 @@ class AclController extends AclAppController {
 
 	var $helpers = array('Html');
 
-	function admin_index() {
+  public function admin_index() {
 
 	}
 
-	function admin_aros() {
+  public function admin_aros() {
 
 	}
 
-	function admin_acos() {
+  public function admin_acos() {
 
 	}
 
-	function admin_permissions() {
+  public function admin_permissions() {
 
 	}
 

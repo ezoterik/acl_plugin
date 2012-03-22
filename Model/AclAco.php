@@ -5,8 +5,8 @@
 class AclAco extends AclAppModel {
 	var $useTable = 'acos';
 	var $actsAs = array('Tree');
-	
-	function getStringPath($id) {
+
+	public function getStringPath($id) {
 		$pieces = $this->getPath($id);
 		$path = array();
 		foreach ($pieces as $p) {

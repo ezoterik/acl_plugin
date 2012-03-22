@@ -4,14 +4,14 @@
 
 class AclAppController extends AppController {
 
-	function success() {
-		header("HTTP/1.0 200 Success", null, 200);
-		exit;
+  public function success(array $serialize=array() ) {
+    $this->set('response',array('code'=>'200'));
+    $this->set('_serialize',array_merge(array('response'),$serialize));
 	}
 
-	function failure() {
-		header("HTTP/1.0 404 Failure", null, 404);
-		exit;
+  public function failure(array $serialize=array(), $message=false) {
+    $this->set('response',array('code'=>'500','message'=>$message));
+    $this->set('_serialize',array_merge(array('response'),$serialize));
 	}
 
 }

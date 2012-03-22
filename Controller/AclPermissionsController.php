@@ -3,13 +3,13 @@
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
 
 class AclPermissionsController extends AclAppController {
-	var $name = 'AclPermissions';
+  public $name = 'AclPermissions';
 
-	var $uses = array('Acl.AclAroAco', 'Acl.AclAro', 'Acl.AclAco');
+  public $uses = array('Acl.AclAroAco', 'Acl.AclAro', 'Acl.AclAco');
 
-	var $helpers = array('Html');
+  public $helpers = array('Html');
 
-	function exists() {
+  public function exists() {
 		$conditions = array(
 			'aro_id' => $this->data['AclAroAco']['aro_id'],
 			'aco_id' => $this->data['AclAroAco']['aco_id']
@@ -21,7 +21,7 @@ class AclPermissionsController extends AclAppController {
 		}
 	}
 
-	function create() {
+  public function create() {
 		if ($this->exists($this->data)) {
 			$this->failure();
 		}
@@ -38,7 +38,7 @@ class AclPermissionsController extends AclAppController {
 		exit;
 	}
 
-	function aros($id = null) {
+  public function aros($id = null) {
 		Configure::write('debug', 0);
 		if (!$id) {
 			$this->failure();
@@ -66,7 +66,7 @@ class AclPermissionsController extends AclAppController {
 		$this->set('nodes', $reordered);
 	}
 
-	function acos($id = null) {
+  public function acos($id = null) {
 		Configure::write('debug', 0);
 		if (!$id) {
 			$this->failure();
@@ -85,17 +85,20 @@ class AclPermissionsController extends AclAppController {
 		$this->set('nodes', $reordered);
 	}
 
-	function revoke($id) {
-		if (!$this->AclAroAco->delete($id)) {
-			$this->failure();
-		}
+  public function revoke($id) {
+		if ($this->AclAroAco->delete($id)) {
+      $this->success();
+    } else {
+      $this->failure();
+    }
 		exit;
 	}
 
-	function crud() {
+  public function crud() {
 		if (isset($this->data)) {
 			if ($this->AclAroAco->save($this->data)) {
-				exit;
+				$this->success();
+        return;
 			}
 		}
 		$this->failure();

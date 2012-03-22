@@ -15,6 +15,8 @@ Installation
   Or, if your not using git or have an older version of git:
  b. Within plugins: git clone git://github.com/interlock/acl_plugin.git acl
 
-2. Enable admin routes (http://book.cakephp.org/view/1565/Library-Classes)
+2. Add plugin to your Config/bootstrap.php and enable routes:
 
-3. Navigate to /admin/acl/ for your project to access the plugin
+  `CakePlugin::load('Acl',array('routes'=>true));`
+
+3. Navigate to /admin/acl/acl for your project to access the plugin

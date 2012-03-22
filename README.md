@@ -1,14 +1,11 @@
-Description
+=Description=
 
 This plugin is used to manage your already existing ACL/ACO/ARO setup. 
 
-For information on setting up ACL for CakePHP please see the book:
-http://book.cakephp.org/view/1242/Access-Control-Lists
-
 Requirements:
-* CakePHP 1.3.0 or higher
+* CakePHP 2.0 or 2.1
 
-Installation
+=Installation=
 
 1. Two options, if your using git for your project and have git 1.6.0 you can use a submodule:
  a. From the root directory of your git checkout: git submodule add git://github.com/interlock/acl_plugin.git app/plugins/acl

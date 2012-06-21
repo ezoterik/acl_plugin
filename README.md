@@ -1,11 +1,11 @@
-=Description
+# Description
 
 This plugin is used to manage your already existing ACL/ACO/ARO setup. 
 
 Requirements:
 * CakePHP 2.0 or 2.1
 
-=Installation
+# Installation
 
 1. Two options, if your using git for your project and have git 1.6.0 you can use a submodule:
  a. From the root directory of your git checkout: git submodule add git://github.com/interlock/acl_plugin.git app/plugins/acl
@@ -21,4 +21,5 @@ Requirements:
 OR
 
 1. Install Composer in your root CakePHP project or app directory: http://packagist.org/
+
 2. ./composer.phar require interlock/acl_plugin

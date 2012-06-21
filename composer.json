@@ -1,0 +1,17 @@
+{
+  "name": "interlock/acl_plugin",
+  "description": "ACL manager plugin",
+  "type": "cakephp-plugin-install",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "James Sapara",
+      "email": "james.sapara@gmail.com",
+      "homepage": "http://slicedprojects.ca",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "interlock/cakephp-plugin-installer": "*"
+  }
+} 

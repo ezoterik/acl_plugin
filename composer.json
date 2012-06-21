@@ -13,5 +13,8 @@
   ],
   "require": {
     "interlock/cakephp-plugin-installer": "dev-0.0.1-dev"
+  },
+  "extra" : {
+    "cakephp-name": "Acl"
   }
 } 

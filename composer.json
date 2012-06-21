@@ -12,6 +12,6 @@
     }
   ],
   "require": {
-    "interlock/cakephp-plugin-installer": "*"
+    "interlock/cakephp-plugin-installer": "dev-0.0.1-dev"
   }
 } 

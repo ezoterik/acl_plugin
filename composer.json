@@ -12,9 +12,12 @@
     }
   ],
   "require": {
-    "interlock/cakephp-plugin-installer": "*"
+    "php": ">=5.3",
+    "shama/baton": "*"
   },
   "extra" : {
-    "cakephp-name": "Acl"
+    "baton": {
+      "path": "Plugins/Acl"
+    }
   }
 } 

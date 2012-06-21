@@ -1,7 +1,7 @@
 {
   "name": "interlock/acl_plugin",
   "description": "ACL manager plugin",
-  "type": "cakephp-plugin-install",
+  "type": "cakephp-plugin",
   "license": "MIT",
   "authors": [
     {

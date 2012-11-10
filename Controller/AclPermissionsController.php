@@ -9,6 +9,8 @@ class AclPermissionsController extends AclAppController {
 
   public $helpers = array('Html');
 
+  public $components = array('RequestHandler');
+
   public function exists() {
 		$conditions = array(
 			'aro_id' => $this->request->data['AclAroAco']['aro_id'],

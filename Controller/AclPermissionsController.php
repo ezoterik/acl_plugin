@@ -98,6 +98,11 @@ class AclPermissionsController extends AclAppController {
 
   public function crud() {
 		if (isset($this->request->data)) {
+			foreach($this->request->data['AclAroAco'] as &$item){
+				if($item == 0){
+					$item = -1;
+				}
+			}
 			if ($this->AclAroAco->save($this->request->data)) {
 				$this->success();
         return;

@@ -71,10 +71,10 @@ class AclAcosController extends AclAppController {
 	}
 
   public function add() {
-		if (isset($this->data['AclAco']['parent_id']) &&  !$this->data['AclAco']['parent_id']) {
-			$this->data['AclAco']['parent_id'] = null;
+		if (isset($this->request->data['AclAco']['parent_id']) &&  !$this->request->data['AclAco']['parent_id']) {
+			$this->request->data['AclAco']['parent_id'] = null;
 		}
-		if ($this->AclAco->save($this->data)) {
+		if ($this->AclAco->save($this->request->data)) {
 			$this->success();
 		} else {
       $this->failure();
@@ -82,11 +82,11 @@ class AclAcosController extends AclAppController {
 	}
 
   public function update() {
-		if (isset($this->data['AclAco']['parent_id']) &&  !$this->data['AclAco']['parent_id']) {
-			$this->data['AclAco']['parent_id'] = null;
+		if (isset($this->request->data['AclAco']['parent_id']) &&  !$this->request->data['AclAco']['parent_id']) {
+			$this->request->data['AclAco']['parent_id'] = null;
 		}
 		$this->layout = '';
-		if ($this->AclAco->save($this->data)) {
+		if ($this->AclAco->save($this->request->data)) {
       $this->success();
     } else {
       $this->failure();

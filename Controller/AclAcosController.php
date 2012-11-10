@@ -7,8 +7,10 @@ class AclAcosController extends AclAppController {
 
   public $uses = array('Acl.AclAco');
 
+  public $components = array('RequestHandler');
+
   public function load($id) {
-		$this->layout = '';
+
 		$n = $this->AclAco->find(
 			'first',
 			array(
@@ -25,7 +27,7 @@ class AclAcosController extends AclAppController {
 			'key' => $n['AclAco']['foreign_key'],
 			'parent_id' => $n['AclAco']['parent_id']
 		);
-		Configure::write('debug', 0);
+
 		$this->set('data',$data);
     $this->set('_serialize',array('data'));
 	}

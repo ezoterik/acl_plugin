@@ -1,8 +1,18 @@
 <?php
-
+App::uses('AdminAppController', 'Admin.Controller');
 /* vim: set expandtab tabstop=2 shiftwidth=2 softtabstop=2: */
 
-class AclAppController extends AppController {
+class AclAppController extends AdminAppController {
+
+	function beforeFilter() {
+		parent::beforeFilter();
+
+		if(!$this->aclCheck('users_permissions')){
+			throw new ForbiddenException();
+		}
+
+		$this->layout = 'Admin.default';
+	}
 
   public function success(array $serialize=array() ) {
     $this->set('response',array('code'=>'200'));

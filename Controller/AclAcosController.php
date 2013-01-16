@@ -20,6 +20,9 @@ class AclAcosController extends AclAppController {
 				'contain' => false
 			)
 		);
+	  if($n == array()){
+		  $n = false;
+	  }
 		$data = array(
 			'id' => $n['AclAco']['id'],
 			'alias' => $n['AclAco']['alias'],
@@ -53,6 +56,9 @@ class AclAcosController extends AclAppController {
 				'contain' => false
 			)
 		);
+	  	if($node == array()){
+			  $node = false;
+		}
 
 		$children = $this->AclAco->children($id, true, null, null, null, 1, 0);
 

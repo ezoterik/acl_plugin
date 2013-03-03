@@ -73,10 +73,10 @@ class AclArosController extends AclAppController {
 	}
 
   public function add() {
-		if (isset($this->data['AclAro']['parent_id']) &&  !$this->data['AclAro']['parent_id']) {
-			$this->data['AclAro']['parent_id'] = null;
+		if (isset($this->request->data['AclAro']['parent_id']) &&  !$this->request->data['AclAro']['parent_id']) {
+			$this->request->data['AclAro']['parent_id'] = null;
 		}
-		if ($this->AclAro->save($this->data)) {
+		if ($this->AclAro->save($this->request->data)) {
       $this->success();
     } else {
       $this->failure();
@@ -84,10 +84,10 @@ class AclArosController extends AclAppController {
 	}
 
   public function update() {
-		if (isset($this->data['AclAro']['parent_id']) &&  !$this->data['AclAro']['parent_id']) {
-			$this->data['AclAro']['parent_id'] = null;
+		if (isset($this->request->data['AclAro']['parent_id']) &&  !$this->request->data['AclAro']['parent_id']) {
+			$this->request->data['AclAro']['parent_id'] = null;
 		}
-		if ($this->AclAro->save($this->data)) {
+		if ($this->AclAro->save($this->request->data)) {
       $this->success();
     } else {
       $this->failure();

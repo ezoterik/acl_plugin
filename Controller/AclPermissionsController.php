@@ -9,10 +9,12 @@ class AclPermissionsController extends AclAppController {
 
   public $helpers = array('Html');
 
+  public $components = array('RequestHandler');
+
   public function exists() {
 		$conditions = array(
-			'aro_id' => $this->data['AclAroAco']['aro_id'],
-			'aco_id' => $this->data['AclAroAco']['aco_id']
+			'aro_id' => $this->request->data['AclAroAco']['aro_id'],
+			'aco_id' => $this->request->data['AclAroAco']['aco_id']
 		);
 		if ($this->AclAroAco->find('count',array('conditions'=>$conditions)) > 0) {
 			return true;
@@ -22,10 +24,10 @@ class AclPermissionsController extends AclAppController {
 	}
 
   public function create() {
-		if ($this->exists($this->data)) {
+		if ($this->exists($this->request->data)) {
 			$this->failure();
 		}
-		$this->AclAroAco->set($this->data);
+		$this->AclAroAco->set($this->request->data);
 		$this->AclAroAco->set(array(
 			'_create' => 1,
 			'_read' => 1,
@@ -95,8 +97,13 @@ class AclPermissionsController extends AclAppController {
 	}
 
   public function crud() {
-		if (isset($this->data)) {
-			if ($this->AclAroAco->save($this->data)) {
+		if (isset($this->request->data)) {
+			foreach($this->request->data['AclAroAco'] as &$item){
+				if($item == 0){
+					$item = -1;
+				}
+			}
+			if ($this->AclAroAco->save($this->request->data)) {
 				$this->success();
         return;
 			}

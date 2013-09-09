@@ -250,23 +250,27 @@ function acl_aco_setup() {
 /* Permissions */
 function acl_aco_permission_refresh() {
 	var aco_id = $('#aco_editor_parentId').attr('value');
-	$.ajax({
-		url: acl_base_url + '/AclPermissions/acos/' + aco_id,
-		dataType: 'html',
-		success: function(data,statusText) {
-			$('#aco_permissions').html(data);
-		}
-	});
+	if(aco_id){
+		$.ajax({
+			url: acl_base_url + '/AclPermissions/acos/' + aco_id,
+			dataType: 'html',
+			success: function(data,statusText) {
+				$('#aco_permissions').html(data);
+			}
+		});
+	}
 }
 function acl_aro_permission_refresh() {
 	var aro_id = $('#aro_editor_parentId').attr('value');
-	$.ajax({
-		url: acl_base_url + '/AclPermissions/aros/' + aro_id,
-		dataType: 'html',
-		success: function(data,statusText) {
-			$('#aro_permissions').html(data);
-		}
-	});
+	if(aro_id){
+		$.ajax({
+			url: acl_base_url + '/AclPermissions/aros/' + aro_id,
+			dataType: 'html',
+			success: function(data,statusText) {
+				$('#aro_permissions').html(data);
+			}
+		});
+	}
 }
 /* PERMISSION */
 function acl_permission_link() {

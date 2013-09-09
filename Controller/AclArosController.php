@@ -58,9 +58,9 @@ class AclArosController extends AclAppController {
 				'contain' => false
 			)
 		);
-		  if($node == array()){
-			  $node = false;
-		  }
+	  if($node == array()){
+		  $node = false;
+	  }
 
 		$children = $this->AclAro->children($id, true, null, null, null, 1, 0);
 

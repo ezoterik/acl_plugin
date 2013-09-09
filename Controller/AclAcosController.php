@@ -56,9 +56,9 @@ class AclAcosController extends AclAppController {
 				'contain' => false
 			)
 		);
-	  	if($node == array()){
-			  $node = false;
-		}
+	  if($node == array()){
+		  $node = false;
+	  }
 
 		$children = $this->AclAco->children($id, true, null, null, null, 1, 0);
 
